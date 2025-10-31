@@ -1,12 +1,12 @@
 {
-  "name": "create-package-name",
-  "description": "Create a new npm package boilerplate",
+  "name": "create-name",
+  "description": "Quickly scaffolds a valid placeholder package that meets all npm publishing requirements, preparing it for future development.",
   "version": "0.0.0",
-  "author": "Jakub Grzywacz",
+  "author": "Jakub Grzywacz <kontakt@jakubgrzywacz.pl>",
   "bin": {
-    "create-package-name": "./bin/run.js"
+    "create-name": "./bin/run.js"
   },
-  "bugs": "https://github.com/https://github.com/jakex7/create-package-name/issues",
+  "bugs": "https://github.com/jakex7/create-name/issues",
   "dependencies": {
     "@oclif/core": "^4",
     "@oclif/plugin-help": "^6",
@@ -37,7 +37,7 @@
     "./dist",
     "./oclif.manifest.json"
   ],
-  "homepage": "https://github.com/https://github.com/jakex7/create-package-name",
+  "homepage": "https://github.com/jakex7/create-name",
   "keywords": [
     "oclif"
   ],
@@ -45,8 +45,8 @@
   "main": "dist/index.js",
   "type": "module",
   "oclif": {
-    "bin": "create-package-name",
-    "dirname": "create-package-name",
+    "bin": "create-name",
+    "dirname": "create-name",
     "commands": {
       "strategy": "single",
       "target": "./dist/index.js"
@@ -55,7 +55,7 @@
       "@oclif/plugin-help"
     ]
   },
-  "repository": "https://github.com/jakex7/create-package-name",
+  "repository": "https://github.com/jakex7/create-name",
   "scripts": {
     "build": "shx rm -rf dist && tsc -b",
     "lint": "eslint",
