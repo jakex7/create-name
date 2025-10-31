@@ -1,7 +1,7 @@
 {
   "name": "create-name",
   "description": "Quickly scaffolds a valid placeholder package that meets all npm publishing requirements, preparing it for future development.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Jakub Grzywacz <kontakt@jakubgrzywacz.pl>",
   "bin": {
     "create-name": "./bin/run.js"
