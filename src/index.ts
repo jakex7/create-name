@@ -7,6 +7,7 @@ import {execSync} from 'node:child_process'
 import {mkdirSync, writeFileSync} from 'node:fs'
 import {tmpdir} from 'node:os'
 import {join} from 'node:path'
+import terminalLink from 'terminal-link'
 
 const theme = {
   boolean: 'cyan',
@@ -85,31 +86,33 @@ export default class Main extends Command {
 
     writeFileSync(join(dir, 'package.json'), JSON.stringify(packageJson, null, 2))
     this.log(
-      `Creating ${colorize('yellow', args.name)} package at ${colorize('gray', dir === args.name ? `./${dir}` : dir)}`,
+      `\n\n✅ Created ${colorize('yellow', args.name)} package at ${colorize(
+        'gray',
+        dir === args.name ? `./${dir}` : dir,
+      )}`,
     )
-    this.log(`Content of ${colorize('yellow', 'package.json')}:
+    this.log(`🔍 Content of ${colorize('yellow', 'package.json')}:
 ${colorizeJson(packageJson, {theme})}
 `)
 
     const answers = await inquirer.prompt([
       {
         default: false,
-        message: `Are you sure you want to publish ${colorize('yellow', args.name)} to ${colorize('red', 'npm')}?`,
+        message: `Are you sure you want to publish it to ${colorize('red', 'npm')}?`,
         name: 'confirm',
         type: 'confirm',
       },
     ])
     if (!answers.confirm) return
 
-    this.log(`Publishing ${colorize('yellow', args.name)}...`)
+    this.log(`\n🔑 Publishing ${colorize('yellow', args.name)}...`)
     if (flags['dry-run']) {
       this.log(colorize('cyan', '[Dry Run] Skipping npm publish'))
-      return
+    } else {
+      execSync('npm publish', {cwd: dir, stdio: 'inherit'})
     }
 
-    execSync('npm publish', {cwd: dir, stdio: 'inherit'})
-
-    this.log(`Successfully published ${colorize('yellow', args.name)}!`)
-    this.log(`https://www.npmjs.com/package/${args.name}`)
+    this.log(`\n✅ Successfully published ${colorize('yellow', args.name)}!`)
+    this.log(`🔗`, terminalLink(`npmjs.com/package/${args.name}`, `https://www.npmjs.com/package/${args.name}`))
   }
 }

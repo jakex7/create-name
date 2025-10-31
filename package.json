@@ -1,7 +1,7 @@
 {
   "name": "create-name",
   "description": "Quickly scaffolds a valid placeholder package that meets all npm publishing requirements, preparing it for future development.",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "author": "Jakub Grzywacz <kontakt@jakubgrzywacz.pl>",
   "bin": {
     "create-name": "./bin/run.js"
@@ -10,7 +10,8 @@
   "dependencies": {
     "@oclif/core": "^4",
     "@oclif/plugin-help": "^6",
-    "inquirer": "^12.10.0"
+    "inquirer": "^12.10.0",
+    "terminal-link": "^5.0.0"
   },
   "devDependencies": {
     "@eslint/compat": "^1",
